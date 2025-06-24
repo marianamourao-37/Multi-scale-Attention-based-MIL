@@ -34,6 +34,7 @@ Multi-scale-Attention-based-MIL/
 │── main.py                              # Main script to train & evaluate implemented models 
 │── offline_feature_extraction.py        # Script for offline feature extraction  
 │── requirements.txt                     # Python dependencies  
+````
 
 ## ⏳ Coming Soon (under construction) 
 - [ ] Scripts for training and evaluating **MIL classification tasks**
