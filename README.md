@@ -5,6 +5,8 @@ This repository contains the **official implementation** of the paper:
 Accepted at the **MICCAI 2025** conference.
 
 ## Repository Structure
+
+```plaintext
 Multi-scale-Attention-based-MIL/
 │── Datasets/                  
 │   ├── dataset_concepts.py              # Dataset classes for MIL classification & lesion detection   
