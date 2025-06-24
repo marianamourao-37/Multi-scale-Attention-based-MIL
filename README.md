@@ -1,5 +1,4 @@
 # Multi-scale Attention-based Multiple Instance Learning (MIL)
-> 🛠️ **Repository under construction**  
 
 This repository contains the **official implementation** of the paper:
 **"Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis"**  
