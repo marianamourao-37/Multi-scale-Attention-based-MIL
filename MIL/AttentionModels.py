@@ -79,8 +79,8 @@ class InducedSetAttentionBlock(nn.Module):
 
         self.I = nn.Parameter(torch.Tensor(1, num_induced_points, d_hidden))
         nn.init.xavier_uniform_(self.I)
-        self.mab0 = MAB(d_hidden, d_model, d_hidden, heads, ln=layer_norm, activation = activation, is_training = is_training)
-        self.mab1 = MAB(d_model, d_hidden, d_hidden, heads, ln=layer_norm, activation = activation, is_training = is_training)
+        self.mab0 = MAB(d_hidden, d_model, d_hidden, heads, ln=layer_norm, activation = activation)
+        self.mab1 = MAB(d_model, d_hidden, d_hidden, heads, ln=layer_norm, activation = activation)
         
     def forward(self, X, mask = None):
         H, _ = self.mab0(self.I.repeat(X.size(0), 1, 1), X)
