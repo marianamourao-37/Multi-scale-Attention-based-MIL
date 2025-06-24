@@ -33,7 +33,6 @@ Multi-scale-Attention-based-MIL/
 │── vindrmammo_grouped_df.csv            # Dataset metadata (e.g. file names & labels)  
 │── main.py                              # Main script to train & evaluate implemented models 
 │── offline_feature_extraction.py        # Script for offline feature extraction  
-│── requirements.txt                     # Python dependencies  
 ````
 
 ## ⏳ Coming Soon (under construction) 
