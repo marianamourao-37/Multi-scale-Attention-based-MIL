@@ -1,1 +1,1 @@
-# Multi-scale-Attention-based-MIL
+# Multi-scale-Attention-based Multiple Instance Learning (MIL) 
