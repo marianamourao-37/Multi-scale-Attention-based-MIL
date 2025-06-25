@@ -1,8 +1,7 @@
 # internal imports 
-from utils.generic_utils import save_hdf5
+from utils.generic_utils import seed_all, save_hdf5
 from Datasets.dataset_utils import bags_dataloader 
 from FeatureExtractors.mammoclip import load_image_encoder
-from utils import seed_all
 
 #external imports 
 import warnings
