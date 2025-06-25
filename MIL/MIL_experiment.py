@@ -48,20 +48,20 @@ def do_experiments(args, device):
     dev_df = args.df[args.df['split'] == "training"].reset_index(drop=True)
     test_df = args.df[args.df['split'] == "test"].reset_index(drop=True)
 
-    # If needed, reduce dataset size for debugging/experiments
+    # reduce dataset size for debugging/experiments if desired
     if args.data_frac < 1.0:
         dev_df = dev_df.sample(frac=args.data_frac, random_state=1, ignore_index=True) 
 
     # repeated k runs using fixed data splits 
     if args.eval_scheme == 'kruns_train+val+test': 
 
-        # Split development set into training and validation sets
+        # split development set into training and validation sets
         train_df, val_df = stratified_train_val_split(dev_df, 0.2, args = args)
 
-        # Initialize results dictionary based on model type
+        # initialize results dictionary based on model type
         if args.multi_scale_model is not None: 
 
-            # Track results for each scale if required by model configuration
+            # track results for each scale if required by model configuration
             if (args.type_scale_aggregator in ['concatenation', 'gated-attention'] and args.deep_supervision) or args.type_scale_aggregator in ['max_p', 'mean_p']:  
                 all_val_results = {scale: {'f1': [], 'bacc': [], 'auc_roc': []} for scale in args.scales}
                 all_test_results = {scale: {'f1': [], 'bacc': [], 'auc_roc': []} for scale in args.scales}
@@ -70,7 +70,7 @@ def do_experiments(args, device):
                 all_val_results = {}
                 all_test_results = {}
 
-            # Always track aggregated results
+            # track aggregated results
             all_val_results['aggregated'] = {'f1': [], 'bacc': [], 'auc_roc': []}
             all_test_results['aggregated'] = {'f1': [], 'bacc': [], 'auc_roc': []}
         
@@ -82,35 +82,35 @@ def do_experiments(args, device):
         # set test data loader
         test_loader = MIL_dataloader(test_df ,'test', args)
 
-        # Perform multiple runs (kruns) of training and testing
+        # perform multiple runs (kruns) of training and testing
         for idx_run in range(args.n_runs):
             print(f'\n================== run nº: {idx_run} ======================')
             args.cur_fold = idx_run  
 
-            # Set seed for reproducibility, adjusting for run number
+            # set seed for reproducibility
             seed_all(args.seed+args.start_run+idx_run)
 
-            # Create directory for saving results for this run
+            # create directory for saving results for this run
             path_results_run = args.output_path / f'run_{args.start_run+idx_run}'
             Path(path_results_run).mkdir(parents=True, exist_ok=True)
 
-            # Train and validate model
+            # train and validate model
             val_results, best_checkpoint_path = k_experiment(train_df, val_df, output_path= path_results_run, args = args, device = device)
 
-            # Load the best model checkpoint
+            # load the best model checkpoint
             checkpoint = torch.load(best_checkpoint_path, map_location='cpu')
             fold_model = build_model(args)
             fold_model.load_state_dict(checkpoint['model'])
             fold_model.to(device)
 
-            # Evaluate model on test set
+            # evaluate model on test set
             test_targs, test_preds, test_probs, test_results = valid_fn(
                 test_loader, fold_model, criterion = torch.nn.BCEWithLogitsLoss(reduction='mean'), args = args, device = device, split = 'test')
 
-            # Free GPU memory
+            # free GPU memory
             del fold_model; clear_memory()
 
-            # Report and store test results
+            # report and store test results
             if args.multi_scale_model is not None: 
                 print(f"\nTest Loss: {test_results['loss']:.4f}") 
 
@@ -247,7 +247,7 @@ def do_experiments(args, device):
             args.cur_fold = fold
             seed_all(args.seed)
 
-            # Setup path for this fold's results
+            # Setup path for the current fold's results 
             path_results_fold = args.output_path / f'fold_{fold}'
             Path(path_results_fold).mkdir(parents=True, exist_ok=True)
 
@@ -371,9 +371,7 @@ def k_experiment(train_df, val_df, output_path, args, device):
             - best_val_stats (dict): Best evaluation metrics on validation set.
             - best_model_path (str): Path to the best model checkpoint.
     """
-
-    #loss_class_weights = loss_class_weighting(train_df, device, args)
-
+        
     if args.running_interactive:
         # test on small subsets of data on interactive mode
         train_df = train_df.sample(1000)
@@ -391,7 +389,6 @@ def k_experiment(train_df, val_df, output_path, args, device):
     # Setup training stage manager if online feature extraction is enabled
     training_stage_manager = Training_Stage_Config(model=model, training_mode=args.training_mode, warmup_epochs=args.warmup_stage_epochs) if args.feature_extraction == 'online' else None 
 
-    # Move model to device
     model = model.to(device)
     print_network(model)
 
@@ -420,15 +417,15 @@ def train_loop(train_loader, valid_loader, model, training_stage_manager, train_
         if training_stage_manager is not None:
             training_stage_manager(model, optimizer, epoch, optimizer.param_groups[0]['lr'])
 
-        # Perform training for one epoch
+        # training for one epoch
         train_stats = train_fn(train_loader, model, train_criterion, optimizer, epoch, args, scheduler, scaler, device)
 
-        # Perform validation after the epoch
+        # validation after the epoch
         val_stats = valid_fn(valid_loader, model, eval_criterion, args, device, split = 'val', epoch = epoch)
     
         elapsed = time.time() - start_time
 
-        # If using multi-scale model, handle metric reporting for each scale and aggregated results
+        # If using multi-scale model, report scale-specific and aggregated results
         if args.multi_scale_model is not None: 
             print(f"\nTrain Loss: {train_stats['loss']:.4f}")
 
@@ -595,10 +592,10 @@ def train_fn(train_loader, model, criterion, optimizer, epoch, args, scheduler, 
             if args.mil_type == 'pyramidal_mil':
                 if args.type_scale_aggregator in ['concatenation', 'gated-attention']:  
 
-                    # Model returns main logits and side logits if deep supervision enabled
+                    # Model returns logits for the scale-specific and multi-scale branches if deep supervision enabled
                     if args.deep_supervision: 
                         logits, side_logits = model(inputs) 
-                    else: 
+                    else: # Model returns logits for the multi-scale branch 
                         logits= model(inputs) 
                     
                     logits = logits.nan_to_num()
@@ -633,7 +630,7 @@ def train_fn(train_loader, model, criterion, optimizer, epoch, args, scheduler, 
             # Unscales the gradients of optimizer's assigned params in-place
             scaler.unscale_(optimizer)
 
-            # Since the gradients of optimizer's assigned params are unscaled, clips as usual:
+            # Since the gradients of optimizer's assigned params are unscaled, clips as usual
             torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip_grad)
 
         # Step optimizer and update scaler
@@ -813,9 +810,10 @@ def valid_fn(valid_loader, model, criterion, args, device, split = 'val', epoch=
                 
                 if args.type_scale_aggregator in ['concatenation', 'gated-attention']:
 
-                    if args.deep_supervision:
+                    # Model returns logits for the scale-specific and multi-scale branches if deep supervision enabled
+                    if args.deep_supervision: 
                         logits, side_logits = model(inputs) 
-                    else: 
+                    else: # Model returns logits only for the multi-scale branch 
                         logits = model(inputs) 
                         
                     logits = logits.nan_to_num()
