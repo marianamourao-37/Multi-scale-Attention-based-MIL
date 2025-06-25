@@ -24,7 +24,7 @@ def run_eval(run_path, args, device):
         
     args.n_class = 1 # Binary classification task
 
-    # Define class labels depending on the task label argument
+    # Define class labels 
     if args.label.lower() == 'mass':
         class0 = 'not_mass'
         class1 = 'mass'
