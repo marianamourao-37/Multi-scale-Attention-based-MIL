@@ -1,9 +1,9 @@
 # internal imports
 from Datasets.dataset_utils import MIL_dataloader, Generic_MIL_Dataset, collate_MIL_patches
-from MIL.build_model import build_model 
+from MIL import build_model 
 from MIL.MIL_experiment import valid_fn
 from utils.generic_utils import seed_all, clear_memory, print_network 
-from utils.data_utils import stratified_train_val_split
+from utils.data_split_utils import stratified_train_val_split
 
 # external imports 
 from torch.utils.data import DataLoader
