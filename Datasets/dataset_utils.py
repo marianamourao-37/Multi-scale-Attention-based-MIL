@@ -11,7 +11,7 @@ import cv2
 
 from .dataset_concepts import Generic_MIL_Dataset_Detection, collate_MIL_patches_detection, Generic_MIL_Dataset, collate_MIL_patches, BagDataset, collate_patch_features
 
-from source_code.utils.generic_utils import clear_memory
+from utils.generic_utils import clear_memory
 
 class center_crop(object):
     def crop_center(self, img):
