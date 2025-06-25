@@ -1,7 +1,7 @@
 # internal imports 
 from MIL.MIL_experiment import do_experiments
 from MIL.roi_eval import ROI_Eval
-from MIL.eval_MIL_classifier import Eval 
+from MIL.inference_MIL_classifier import Eval 
 from utils.generic_utils import seed_all
 
 #external imports 
