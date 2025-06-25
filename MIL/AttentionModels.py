@@ -13,6 +13,9 @@ from torch.nn.init import xavier_uniform_, constant_
 import math
 
 class MAB(nn.Module):
+    """ 
+    Adapted from official implementation of SetTrans: https://github.com/juho-lee/set_transformer/blob/master/modules.py"
+    """
     def __init__(self, dim_Q, dim_K, dim_V, num_heads, ln=False, dropout = 0.0, activation = 'softmax'):
         super(MAB, self).__init__()
         self.dim_Q = dim_Q
@@ -54,6 +57,9 @@ class MAB(nn.Module):
         return O, A
 
 class SetAttentionBlock(nn.Module):
+    """ 
+    Adapted from official implementation of SetTrans: https://github.com/juho-lee/set_transformer/blob/master/modules.py"
+    """
     def __init__(self, d_model: int, d_hidden: int, heads: int = 1, layer_norm: bool = True, activation = 'softmax'):
         super(SetAttentionBlock, self).__init__()
         
@@ -74,6 +80,9 @@ class SetAttentionBlock(nn.Module):
 
 
 class InducedSetAttentionBlock(nn.Module):
+    """ 
+    Adapted from official implementation of SetTrans: https://github.com/juho-lee/set_transformer/blob/master/modules.py"
+    """
     def __init__(self, d_model: int, d_hidden, num_induced_points: int, heads: int = 1, layer_norm: bool = True, activation = 'softmax'):
         super(InducedSetAttentionBlock, self).__init__()
 
@@ -96,6 +105,9 @@ class InducedSetAttentionBlock(nn.Module):
                 f'activation={self.mab1.activation})')
 
 class PoolingByMultiheadAttention(nn.Module):
+    """ 
+    Adapted from official implementation of SetTrans: https://github.com/juho-lee/set_transformer/blob/master/modules.py"
+    """
     def __init__(self, d_model: int, num_seed_points: int = 1, heads: int = 1, layer_norm: bool = True, activation = 'softmax'):
         super(PoolingByMultiheadAttention, self).__init__()
         
