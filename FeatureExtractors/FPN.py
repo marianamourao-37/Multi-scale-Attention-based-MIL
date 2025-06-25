@@ -11,6 +11,7 @@ class FeaturePyramidNetwork(nn.Module):
     """
     Feature Pyramid Network (FPN) module for multi-scale instance feature extraction.
     This implementation is based on "Feature Pyramid Network for Object Detection" (https://arxiv.org/abs/1612.03144).
+    Adapted from https://github.com/pytorch/vision/blob/release/0.12/torchvision/ops/feature_pyramid_network.py
 
     Args:
         backbone (nn.Module): Backbone network that provides feature maps.
