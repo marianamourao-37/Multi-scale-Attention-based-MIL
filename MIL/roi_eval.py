@@ -163,7 +163,7 @@ def plot_image_with_boxes(image,
                           ax = None, 
                           cmap=plt.cm.bone):
     """
-    Plot an image with bounding boxes overlaid.
+    Plot an image with bounding boxes.
     
     Args:
         image (ndarray): Input image.
