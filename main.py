@@ -31,8 +31,6 @@ def config():
 
     parser.add_argument('--train', action='store_true', default=False, help='Training mode.')
     parser.add_argument('--evaluation', action='store_true', default=False, help='Evaluation mode.')
-    #parser.add_argument('--vis_features', default=None, choices = ['inst_features', 'bag_features'])
-    #parser.add_argument('--vis_features_method', default='tsne', choices = ['tsne', 'umap'], type=str, help="")
     parser.add_argument('--eval_set', default='test', choices = ['val', 'test'], type=str, help="")
     
     # Data settings
@@ -109,10 +107,6 @@ def config():
     parser.add_argument("--epochs", default=9, type=int)
     parser.add_argument("--weight-decay", default=1e-4, type=float)
     parser.add_argument("--weighted-BCE", default='n', type=str)
-    #parser.add_argument("--focal_alpha", default=0.25, type=float)
-    #parser.add_argument("--focal_gamma", default=2.0, type=float)
-    #parser.add_argument("--focal_reduction", default='mean', type=str, choices=['mean', 'sum'])
-    #parser.add_argument("--detector-threshold", default=0.1, type=float)
     parser.add_argument('--clip_grad', type=float, default=0.0, metavar='NORM',
                    help='Clip gradient norm (default: None, no clipping)')
 
@@ -135,19 +129,13 @@ def config():
     parser.add_argument('--drop_attention_pool', type=float, default=0.0, metavar='PCT', help='Dropout rate used in the attention pooling mechanism (default: 0.)')
     parser.add_argument('--drop_mha', type=float, default=0.0, metavar='PCT', help='Dropout rate used in the attention pooling mechanism (default: 0.)')
     parser.add_argument('--fcl_dropout', type=float, default=0.0)
-    #parser.add_argument('--mil_dropout', default=0.0, type=float, help='Bag classifier dropout rate [0]')
     parser.add_argument("--lamda", type=float, default=0.0,
                         help='lambda used for balancing cross-entropy loss and rank loss.')
-    #parser.add_argument("--subsampling", type=float, default=1.0, help='the ratio of subsampling')
-    #parser.add_argument('--alpha', help='weight of the WSI loss: ',type=float, default=0.5)
     
     # ROI evaluation parameters
     parser.add_argument('--roi_eval', action='store_true', default=False, help='Evaluate post-hoc detection performance')
     parser.add_argument('--roi_attention_threshold', type=float, default=0.5)
-    #parser.add_argument('--roi_gradcam_threshold', type=float, default=0.0, help='Threshold for the GradCam probability being considered as a ROI')
     parser.add_argument('--visualize_num_images', default=0, type=int, help="")
-    #parser.add_argument('--grad_cam_method', default='grad_cam', choices = ['grad_cam', 'hirescam', 'grad_cam_elementwise', 'grad_cam++', 'xgrad_cam', 'layer_cam'], type=str, help="")
-    #parser.add_argument('--eigen_smooth', action='store_true', default=False)
     parser.add_argument('--quantile_threshold', default = 0.95, type = float) 
     parser.add_argument('--max_bboxes', default = 100, type = int)
     parser.add_argument('--min_area', default = 1024, type = int)
@@ -169,7 +157,6 @@ def config():
     parser.add_argument("--print-freq", default=5000, type=int)
     parser.add_argument("--log-freq", default=1000, type=int)
     parser.add_argument("--running-interactive", default='n', type=str)
-    #parser.add_argument("--inference-mode", default='n', type=str)
     parser.add_argument('--eval_scheme', default='kruns_train+val', type=str, help='Evaluation scheme [kruns_train+val | kfold_cv+test ]')
     parser.add_argument('--resume', default = None, type = str) 
     parser.add_argument('--test_example', default = None, type = str) 
