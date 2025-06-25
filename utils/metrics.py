@@ -12,11 +12,8 @@ def compute_AUC(gt, pred):
     """Computes Area Under the Curve (AUC) from prediction scores.
 
     Args:
-        gt: Pytorch tensor on GPU, shape = [n_samples, n_classes]
-          true binary labels.
-        pred: Pytorch tensor on GPU, shape = [n_samples, n_classes]
-          can either be probability estimates of the positive class,
-          confidence values, or binary decisions.
+        gt: true binary labels (shape = [n_samples, n_classes])
+        pred: probability estimates of the positive class (shape = [n_samples, n_classes])
 
     Returns:
         List of AUROCs, AUPRCs of all classes.
