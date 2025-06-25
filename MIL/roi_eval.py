@@ -237,8 +237,7 @@ def _compute_ap(recall, precision, ap_method = 'area'):
         ap_area (float): Average Precision computed as area under the precision-recall curve.
         ap_11points (float): Average Precision computed by 11-point interpolation method.
     """
-    # correct AP calculation
-    # first append sentinel values at the end
+    # ------ AP as the area under the precision-recall curve ------
     mrec = np.concatenate(([0.0], recall, [1.0]))
     mpre = np.concatenate(([0.0], precision, [0.0]))
 
@@ -252,7 +251,7 @@ def _compute_ap(recall, precision, ap_method = 'area'):
     # Sum the area under the curve
     ap_area = np.sum((mrec[i + 1] - mrec[i]) * mpre[i + 1])
 
-    # 11-point interpolation AP calculation
+    # ------ 11-point interpolation AP calculation ------
     ap_11points = 0.0
 
     # Evaluate precision at 11 recall points: [0, 0.1, ..., 1]
@@ -393,6 +392,7 @@ def get_cumlative_attention(cam, bbox):
 def extract_bounding_boxes_from_heatmap(heatmap, quantile_threshold=0.98, max_bboxes=3, min_area=230, iou_threshold=0.5): 
     """
     Extract bounding boxes from a heatmap by thresholding high-attention regions on a given heatmap. 
+    Adapted from BoundingBoxGenerator class in https://github.com/batmanlab/AGXNet/blob/ee99ef199f1f96f7d0c35336935bd117664e733c/utils.py#L11
 
     Args:
         heatmap (np.ndarray): 2D heatmap.
