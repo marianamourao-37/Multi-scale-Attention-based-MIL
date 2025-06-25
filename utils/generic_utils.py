@@ -103,3 +103,25 @@ def print_network(net):
 
     print(f"\nTotal number of parameters: {total_params_str}")
     print(f"Total number of trainable parameters: {total_trainable_params_str}")
+
+
+def save_hdf5(output_path, asset_dict, attr_dict= None, mode='w'):
+
+    file = h5py.File(output_path, mode)
+    
+    for key, val in asset_dict.items():
+        data_shape = val.shape
+        data_type = val.dtype
+        chunk_shape = (1, ) + data_shape[1:]
+        maxshape = (None, ) + data_shape[1:]
+
+        dset = file.create_dataset(key, shape=data_shape, maxshape=maxshape, chunks=chunk_shape, dtype=data_type)
+        dset[:] = val
+
+        if attr_dict is not None:
+            if key in attr_dict.keys():
+                for attr_key, attr_val in attr_dict[key].items():
+                    
+                    dset.attrs[attr_key] = attr_val
+        file.close()
+    return output_path
