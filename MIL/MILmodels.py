@@ -16,12 +16,10 @@ from typing import Union, Optional, Any, Tuple
 
 from torch.nn.parameter import Parameter
 
-#__all__ = ['EmbeddingMIL']  
-
 class head(nn.Module):    
     """
     A classification head. 
-    Also supports computing scale-specific importance weights. 
+    Also supports computing scale-specific weights. 
 
     Args:
         in_features (int): Number of input features.
@@ -43,7 +41,7 @@ class head(nn.Module):
 
     def compute_scale_weights(self, x, num_scales, feat_dim):
         """
-        Computes softmax-normalized weights for each scale based on feature importance.
+        Computes softmax-normalized weights for each scale based on feature importance in classification.
 
         Args:
             x (Tensor): Input features of shape (B, num_scales * feat_dim).
@@ -296,7 +294,7 @@ class EmbeddingMIL(MIL):
         super().__init__(**mil_args)
         
     def save_patch_scores(self, A):
-        """Save attention weights (patch-level scores)."""
+        """Save patch-level scores attention weights."""
         self.patch_scores = A
         
     def get_patch_scores(self):
@@ -778,7 +776,7 @@ class NestedPyramidalMILmodel(MIL):
                 x = self.scale_aggregator(x)
 
                 
-            # # Final classification: Apply a MLP to obtain the bag label: (Batch_size, embedding_size) -> (Batch_size, num_classes)
+            # Final classification - Apply a MLP to obtain the bag label: (Batch_size, embedding_size) -> (Batch_size, num_classes)
             if not self.is_training and self.type_scale_aggregator == 'concatenation' and x.shape[0] == 1: 
                 x, A = self.classifier(x, len(self.scales), self.fcl_encoder_dim, self.is_training)  
                 self.save_scale_scores(A)
