@@ -58,8 +58,6 @@ def config():
     parser.add_argument("--swin_encoder", default="microsoft/swin-tiny-patch4-window7-224", type=str, help="Swin Transformer model identifier"))
     parser.add_argument("--pretrained_swin_encoder", default="y", type=str, help="Whether Swin encoder is pretrained (y/n)")
     parser.add_argument("--swin_model_type", default="y", type=str)
-
-    # --- Runtime and Logging ---
     
     # Device settings 
     parser.add_argument("--num-workers", default=4, type=int, help="Number of data loader workers")
@@ -76,7 +74,7 @@ def config():
 
 def main(args):
 
-    # === Setup ===
+    # ------ Setup ------
     torch.cuda.empty_cache() # Clean up
     seed_all(args.seed) # Fix the seed for reproducibility
     
@@ -99,7 +97,7 @@ def main(args):
 
     args.n_class = 1
 
-    # === Load Dataset ===
+    # ------ Load Dataset ------
     args.data_dir = Path(args.data_dir)
     
     args.df = pd.read_csv(args.data_dir / args.csv_file)
@@ -119,7 +117,7 @@ def main(args):
     print(f"df shape: {args.df.shape}")
     print(args.df.columns)
         
-    # === Load Mammo-CLIP Model ===
+    # ------ Load Mammo-CLIP Model ------
     ckpt = torch.load(args.clip_chk_pt_path, map_location="cpu")
     args.image_encoder_type = ckpt["config"]["model"]["image_encoder"]["name"]
 
@@ -147,7 +145,7 @@ def main(args):
 
     all_num_patches = []
 
-    # === Feature Extraction ===
+    # ------ Feature Extraction ------
     for count, data in enumerate(tqdm(loader)):
         
         with torch.no_grad():
