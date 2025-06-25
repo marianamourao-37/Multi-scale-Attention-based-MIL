@@ -308,9 +308,7 @@ def compute_overlap(a, b, iou_method = 'iou'):
     ua = np.maximum(ua, np.finfo(float).eps)
     
     if iou_method == 'iou':
-        # compute the intersection over union by taking the intersection
-        # area and dividing it by the sum of prediction + ground-truth
-        # areas - the interesection area
+        # compute the intersection over union 
         iou = intersection / ua
 
     elif iou_method == 'iobb_detection': 
