@@ -81,11 +81,14 @@ def build_model(args):
             )
             
         else: # convetional MIL formulation (globally group and aggregate all instances under the same bag for each scale) 
-            
-            num_patches = math.ceil(args.img_size[0]/args.patch_size) * math.ceil(args.img_size[1]/args.patch_size)
 
             # number of instances per scale
-            num_inst = [(args.patch_size/s)**2 * num_patches for s in args.scales] if args.multi_scale_model in ['fpn', 'backbone_pyramid'] else [math.ceil(args.img_size[0]/s) * math.ceil(args.img_size[1]/s) for s in args.scales]
+            if args.multi_scale_model in ['fpn', 'backbone_pyramid']: # FPN-based mil models 
+                num_patches = math.ceil(args.img_size[0]/args.patch_size) * math.ceil(args.img_size[1]/args.patch_size)
+                num_inst = [(args.patch_size/s)**2 * num_patches for s in args.scales] 
+                
+            else: # multi-scale patch-based mil models 
+                num_inst = [math.ceil(args.img_size[0]/s) * math.ceil(args.img_size[1]/s) for s in args.scales]
             
             model = PyramidalMILmodel(
                 args.type_scale_aggregator, 
