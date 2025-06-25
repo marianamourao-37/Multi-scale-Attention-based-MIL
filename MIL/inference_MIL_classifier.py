@@ -6,10 +6,11 @@ import os
 import torch
 
 from Datasets.dataset_utils import MIL_dataloader
-from MIL.build_model import build_model 
+from MIL import build_model 
 from MIL.MIL_experiment import valid_fn
 from utils.generic_utils import seed_all, print_network
 from utils.plot_utils import plot_confusion_matrix, ROC_curves
+from utils.data_split_utils import stratified_train_val_split
 
 def run_eval(run_path, args, device):
 
