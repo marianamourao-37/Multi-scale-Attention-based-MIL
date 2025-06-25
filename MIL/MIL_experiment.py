@@ -13,13 +13,13 @@ from tqdm import tqdm
 
 # internal imports 
 from Datasets.dataset_utils import MIL_dataloader
-from MIL.build_model import build_model 
+from MIL import build_model 
 
 from utils.metrics import auroc, evaluate_metrics
-from utils.generic_utils import seed_all, AverageMeter, timeSince, print_network, clear_memory #, loss_class_weighting
+from utils.generic_utils import seed_all, AverageMeter, timeSince, print_network, clear_memory 
 from utils.training_setup_utils import initialize_training_setup, Training_Stage_Config
 from utils.plot_utils import plot_loss_and_acc_curves, plot_lrs_scheduler, plot_confusion_matrix, ROC_curves
-from utils.data_utils import generator_cross_val_folds, stratified_train_val_split
+from utils.data_split_utils import generator_cross_val_folds, stratified_train_val_split
 
 def do_experiments(args, device):
         
