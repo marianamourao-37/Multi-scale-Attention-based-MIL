@@ -13,7 +13,7 @@ def build_model(args):
 
     else: # offline feature extraction: use pre-extracted features 
             
-        if args.multi_scale_model in ['backbone_pyramid', 'fpn']: 
+        if args.multi_scale_model in ['backbone_pyramid', 'fpn']: # FPN-based instance encoder for fpn-based mil models
             
             feature_extractor = FeaturePyramidNetwork(
                 backbone=None, 
