@@ -10,8 +10,8 @@ from typing import Union, Optional, Callable, Dict
 
 def Define_Feature_Extractor(args) -> Union[nn.Module, int]:
     """
-    Loads and configures a feature extractor with optional FPN wrapping for multi-scale instance feature extraction.
-
+    Loads and configures a feature extractor. 
+    For our FPN-MIL models, an FPN-based instance feature extractor is considered. 
     """
 
     # Load CLIP checkpoint containing pretrained image encoder and config
