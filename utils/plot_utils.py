@@ -6,12 +6,7 @@ from sklearn import metrics
 
 def plot_loss_and_acc_curves(results_train, results_val, metric_name, path_results_fold, model_ema=False):
     """Plots training curves of a results dictionary.
-    Args:
-        results (dict): dictionary containing list of values, e.g.
-            {"train_loss": [...],
-             "train_acc": [...],
-             "val_loss": [...],
-             "val_acc": [...]}
+
     """
     train_loss = results_train['loss']
     val_loss = results_val['loss']
