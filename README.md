@@ -36,6 +36,16 @@ Multi-scale-Attention-based-MIL/
 │── offline_feature_extraction.py           # Script for offline feature extraction  
 ````
 
+
+# Checkpoints
+
+We provide pre-training checkpoints for our best-performing models.  
+
+|Description         | Checkpoints |
+|--------------------|-------------|
+| Best model for calcifications | [FPN-SetTrans](https://drive.google.com/file/d/1pcr5wa8cI7R8L-7MfkXBEBB2IE02NmMI/view?usp=drive_link) |
+| Best model for masses | [FPN-AbMIL](https://drive.google.com/file/d/1ptgub09TjB2oCpm2ij2OyaVDKT_5y8D0/view?usp=drive_link) |
+
 ## ⏳ Coming Soon (under construction) 
 - [ ] Scripts for training and evaluating **MIL classification tasks**
 - [ ] Scripts for post-hoc evaluation of **lesion detection tasks**
