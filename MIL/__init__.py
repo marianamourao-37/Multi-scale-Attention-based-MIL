@@ -31,7 +31,7 @@ def build_model(args):
             num_chs = args.feat_dim # feat dim of pre-extracted features 
            
     ############################ Define the MIL Model ############################            
-    mil_args = dict(is_training = not args.roi_eval, 
+    mil_args = dict(is_training = args.train, #not args.roi_eval, 
                     multi_scale_model = args.multi_scale_model,  
                     inst_encoder=feature_extractor,
                     embedding_size=num_chs,
@@ -40,20 +40,20 @@ def build_model(args):
                     drop_classhead=args.drop_classhead,
                     map_prob_func = args.map_prob_func,
                     # MIL Encoder args
-                    fcl_encoder_dim = args.fcl_encoder_dim, 
-                    fcl_dropout = args.fcl_dropout, 
                     type_mil_encoder = args.type_mil_encoder,
-                    sab_num_heads = args.sab_num_heads, 
-                    isab_num_heads = args.isab_num_heads,
-                    num_encoder_blocks = args.num_encoder_blocks, 
+                    fcl_encoder_dim = args.fcl_encoder_dim, 
+                    fcl_dropout = args.fcl_dropout if args.type_mil_encoder == 'mlp' else None, 
+                    sab_num_heads = args.sab_num_heads if args.type_mil_encoder == 'sab' else None, 
+                    isab_num_heads = args.isab_num_heads if args.type_mil_encoder == 'isab' else None,
+                    num_encoder_blocks = args.num_encoder_blocks if args.type_mil_encoder in ['sab', 'isab'] else None, 
                     # MIL Aggregator args
                     pooling_type=args.pooling_type,
                     fcl_attention_dim=args.fcl_attention_dim,
                     drop_attention_pool=args.drop_attention_pool,
-                    pma_num_heads = args.pma_num_heads, 
+                    pma_num_heads = args.pma_num_heads if args.pooling_type == 'pma' else None, 
                     # General self-attention based args 
-                    drop_mha=args.drop_mha, 
-                    trans_layer_norm=args.trans_layer_norm
+                    drop_mha=args.drop_mha if args.type_mil_encoder in ['isab', 'sab'] else None, 
+                    trans_layer_norm=args.trans_layer_norm if args.type_mil_encoder in ['isab', 'sab'] else None
                    )
 
     # instantiate MIL Model
