@@ -752,7 +752,7 @@ def Compute_Heatmaps_patches(model: torch.nn.Module,
                 heatmap = torch.where(attention_map_counts == 0, torch.tensor(0.0), torch.div(attention_map, attention_map_counts))
 
                 # Apply Gaussian smoothing
-                heatmap = torch.from_numpy(gaussian_filter(heatmap, sigma=10*2))
+                heatmap = torch.from_numpy(gaussian_filter(heatmap, sigma=10))
 
                 # Normalize heatmap values only inside the segmentation mask, zero outside
                 heatmap = torch.where(torch.tensor(seg_mask, dtype=torch.bool), (heatmap - heatmap[seg_mask != 0].min()) / (heatmap[seg_mask != 0].max() - heatmap[seg_mask != 0].min()), torch.tensor(0.0))
