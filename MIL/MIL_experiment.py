@@ -429,7 +429,7 @@ def train_loop(train_loader, valid_loader, model, training_stage_manager, train_
         if args.multi_scale_model is not None: 
             print(f"\nTrain Loss: {train_stats['loss']:.4f}")
 
-            if (args.type_scale_aggregator in ['concatenation', 'gated-attention', 'single_stage', 'cross_scale_attention'] and args.deep_supervision) or args.type_scale_aggregator in ['max_p', 'mean_p']: 
+            if (args.type_scale_aggregator in ['concatenation', 'gated-attention'] and args.deep_supervision) or args.type_scale_aggregator in ['max_p', 'mean_p']: 
                 for s in args.scales:
                     print(f"Scale: {s} --> Train F1-Score: {train_stats[s]['f1']:.4f} | Train Bacc: {train_stats[s]['bacc']:.4f} | Train ROC-AUC: {train_stats[s]['auc_roc']:.4f}")
                 
@@ -437,7 +437,7 @@ def train_loop(train_loader, valid_loader, model, training_stage_manager, train_
         
             print(f"\nVal Loss: {val_stats['loss']:.4f}") 
 
-            if (args.type_scale_aggregator in ['concatenation', 'gated-attention', 'single_stage', 'cross_scale_attention'] and args.deep_supervision) or args.type_scale_aggregator in ['max_p', 'mean_p']: 
+            if (args.type_scale_aggregator in ['concatenation', 'gated-attention'] and args.deep_supervision) or args.type_scale_aggregator in ['max_p', 'mean_p']: 
                 for s in args.scales:
                     print(f"Scale: {s} --> Val F1-Score: {val_stats[s]['f1']:.4f} | Val Bacc: {val_stats[s]['bacc']:.4f} | Val ROC-AUC: {val_stats[s]['auc_roc']:.4f}")            
             
