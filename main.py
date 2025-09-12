@@ -90,11 +90,11 @@ def config():
     parser.add_argument('--norm_fpn', type = bool, default = False)
     
     parser.add_argument('--deep_supervision', action='store_true', default=False)
-    parser.add_argument('--type_scale_aggregator', type=str, choices = ['single_stage', 'concatenation', 'max_p', 'mean_p','attention', 'gated-attention', 'cross_scale_attention'], default=None)
+    parser.add_argument('--type_scale_aggregator', type=str, choices = ['concatenation', 'max_p', 'mean_p','attention', 'gated-attention'], default=None)
 
     #Nested MIL 
     parser.add_argument('--nested_model', action='store_true', default=False)
-    parser.add_argument('--type_region_aggregator', type=str, choices = ['single_stage', 'concatenation', 'max_p', 'mean_p','attention', 'gated-attention', 'cross_scale_attention'], default=None)
+    parser.add_argument('--type_region_aggregator', type=str, choices = ['concatenation', 'max_p', 'mean_p','attention', 'gated-attention'], default=None)
     parser.add_argument('--type_region_encoder', default=None, choices=['mlp', 'sab', 'isab'], type=str, help="Type of MIL encoder.")
     parser.add_argument('--type_region_pooling', default=None, choices=['max', 'mean', 'attention', 'gated-attention', 'pma'], type=str, help="MIL pooling operator")
     
