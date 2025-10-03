@@ -64,6 +64,7 @@ python offline_feature_extraction.py \
   --patch_size 512 \ 
   --overlap 0.0 \
   --multi_scale_model 'fpn'
+```
 
 # Checkpoints
 
