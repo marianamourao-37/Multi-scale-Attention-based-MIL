@@ -24,13 +24,13 @@ The proposed multi-scale attention-based MIL framework has three main modules, n
 
 # Table of Contents 
 
-1. Repository Structure
-2. Data Download
-3. Feature Extraction
-4. Code examples
-5. Tutorial Notebooks
-6. Checkpoints
-7. Reference
+1. [Repository Structure](#repository-structure)  
+2. [Data Download](#data-download)  
+3. [Feature Extraction](#feature-extraction)  
+4. [Code Examples](#code-examples)  
+5. [Tutorial Notebooks](#tutorial-notebooks)  
+6. [Checkpoints](#checkpoints)  
+7. [Reference](#reference)
 
 # Repository Structure
 
