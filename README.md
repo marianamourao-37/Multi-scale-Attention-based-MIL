@@ -74,11 +74,11 @@ The arguments of the implemented framework are mainly related to its main module
 - **Instance aggregators**: aggregate instance features into a corresponding bag embedding at each analyzed scale. The AbMIL and SetTrans were considered in the experiments, having an encoder and pooling stage. 
 - **Multi-scale aggregator**: aggregates the scale-specific bag embeddings into a multi-scale bag embedding, which is used for the final image classification.
 
-Bellow, we provide code examples to perform different tasks for specific lesion types. 
+Bellow, we provide code examples to perform different tasks for specific lesion types, particularly focusing our best-performing FPN-MIL model configurations. 
 
 <details> <summary>MIL training</summary>
 
-MIL performs an image classification task. Bellow, we provide codes to train our best-performing FPN-MIL model configurations for specific lesion types. 
+MIL performs an image classification task. By default, feature extraction is performed **offline**, meaning that the framework receives pre-extracted features as input (see the Feature Extraction section above).  Alternatively, feature extraction can be set to **online**, in which case the framework receives images directly as input. In the online mode, the backbone can be either **frozen** or **finetuned**, controlled by the `--training_mode` argument (default is `"frozen"`, but it can also be set to `"finetune"`).  Please refer to the `main.py` file to see the full range of available arguments.
 
 - **Best-performing configuration for Calcifications**
 ```bash
@@ -90,6 +90,7 @@ python main.py \
   --label "Suspicious_Calcification" \
   --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
   --train \
+  --feature_extraction "offline" \ 
   --epochs 30 \
   --batch-size 8 \
   --eval_scheme 'kruns_train+val+test' \
@@ -138,12 +139,12 @@ python main.py \
   --scales 16 32 128 
 ```
 
-- data-dir: root directory of the dataset
-- img-dir: directory containing images, absolute path
-- csv-file: csv file containing image paths and labels
-- dataset: dataset name, e.g. ViNDr 
-- label: target label for classification, e.g., Mass, Suspicious_Calcification
-- clip_chk_pt_path: path to the checkpoint of the pre-trained Mammo-CLIP model
+- `data-dir`: root directory of the dataset
+- `img-dir`: directory containing images, absolute path
+- `csv-file`: csv file containing image paths and labels
+- `dataset`: dataset name, e.g. ViNDr 
+- `label`: target label for classification, e.g., Mass, Suspicious_Calcification
+- `clip_chk_pt_path`: path to the checkpoint of the pre-trained Mammo-CLIP model
 
   
 </details>
@@ -204,12 +205,13 @@ python main.py \
 --scales 16 32 128 
 ```
 
-- data-dir: root directory of the dataset
-- img-dir: directory containing images, absolute path
-- csv-file: csv file containing image paths and labels
-- dataset: dataset name, e.g. ViNDr 
-- label: target label for classification, e.g., Mass, Suspicious_Calcification
-- clip_chk_pt_path: path to the checkpoint of the pre-trained Mammo-CLIP model
+- `data-dir`: root directory of the dataset
+- `img-dir`: directory containing images, absolute path
+- `csv-file`: csv file containing image paths and labels
+- `dataset`: dataset name, e.g. ViNDr 
+- `label`: target label for classification, e.g., Mass, Suspicious_Calcification
+- `clip_chk_pt_path`: path to the checkpoint of the pre-trained Mammo-CLIP model
+
 
 </details>
 
