@@ -6,6 +6,9 @@ This repository contains the **official implementation** of the paper:
 
 Accepted at the **MICCAI 2025** conference for oral presentation and poster session. 
 
+![Multi-scale MIL framework]()
+
+
 ## Repository Structure
 
 ```plaintext
