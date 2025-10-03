@@ -260,8 +260,6 @@ We provide pre-training checkpoints for our best-performing models.
 | Best model for masses | [FPN-AbMIL](https://drive.google.com/file/d/1ptgub09TjB2oCpm2ij2OyaVDKT_5y8D0/view?usp=sharing) |
 
 ## ⏳ Coming Soon (under construction) 
-- [ ] Scripts for training and evaluating **MIL classification tasks**
-- [ ] Scripts for post-hoc evaluation of **lesion detection tasks**
 - [ ] Jupyter Notebooks to reproduce **MICCAI 2025 results**
 
 ## Reference 
