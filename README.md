@@ -11,7 +11,7 @@ Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnos
   </a>
 </p>
 
-This repository contains the **official implementation** of the paper "Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis", accepted at the **MICCAI 2025** conference for oral presentation and poster session. 
+This repository contains the **official implementation** of the paper "**Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis**", accepted at the **MICCAI 2025** conference for oral presentation and poster session. 
 
 ![Multi-scale attention-based MIL framework](figs/FPN-MIL.png)
 
