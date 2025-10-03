@@ -105,7 +105,7 @@ python offline_feature_extraction.py \
 
 MIL performs an imagle classification task. Bellow, we provide codes to train our best-performing FPN-MIL model configurations for specific lesion types: 
 
-- ** Best-performing configuration for Calcifications**
+- **Best-performing configuration for Calcifications**
 ```bash
 python main.py \
   --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
@@ -132,7 +132,7 @@ python main.py \
   --scales 16 32 128
 ```
 
-- ** Best-performing configuration for Masses**
+- **Best-performing configuration for Masses**
 ```bash
 python main.py \
   --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
