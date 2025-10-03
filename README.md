@@ -46,7 +46,7 @@ Multi-scale-Attention-based-MIL/
 As mentioned in the paper, this work uses the preprocessed images provided by Ghosh et al. in their Mammo-CLIP work. 
 - [Link to input images](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
 
-The code assumes the following organization of folders and files: `data_dir` folder is the root directory of the dataset, where it is stored the `vindrmammo_grouped_df.csv` file with metadata information (patient id, image paths, annotated lesions, etc.) for the downstream tasks (image classification and lesion detection), besides also the `img_dir` folder containing the input mammograms.
+The code assumes the following organization of folders and files: `data_dir` folder is the root directory of the dataset, where it is stored the [vindrmammo_grouped_df.csv](vindrmammo_grouped_df.csv) file with metadata information (patient id, image paths, annotated lesions, etc.) for the downstream tasks (image classification and lesion detection), besides also the `img_dir` folder containing the input mammograms.
 
 ```plaintext
 data_dir/
@@ -252,6 +252,9 @@ To ensure fully reproducible results, notebooks are provided to run the code for
 
 - [Experiments_Calcifications.ipynb](notebooks/Experiments_Calcifications.ipynb)
 - [Experiments_Masses.ipynb](notebooks/Experiments_Masses.ipynb)
+
+Besides, to load our best checkpoint models for each lesion type (FPN-SetTrans for calcifications and FPN-AbMIL for masses), consider the following notebook: 
+- [Load checkpoints.ipynb](notebooks/Load checkpoints.ipynb)
 
 # Checkpoints
 
