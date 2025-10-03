@@ -39,8 +39,7 @@ Multi-scale-Attention-based-MIL/
 # Data Download
 
 As mentioned in the paper, this work uses the preprocessed images provided by Ghosh et al. in their Mammo-CLIP work. 
-[Link to input images](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
-[Link to csv file](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
+- [Link to input images](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
 
 Regarding metadata information for the downstream tasks (image classification and lesion detection), please use the vindrmammo_grouped_df.csv provided in this repository. 
 
