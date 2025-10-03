@@ -67,16 +67,42 @@ python offline_feature_extraction.py \
   --multi_scale_model 'fpn'
 ```
 
-# MIL training 
+# Code examples 
 
 The arguments of the implemented framework are mainly related to its main modules, namely: 
-- multi-scale instance encoder: uses the original Feature Pyramid Network (FPN) to produce a semantically refined feature pyramid, where instances are defined as the set of pixels in the feature maps at reduction factors 16, 32 and 128, which allow a multi-scale analysis across different receptive-field granualrities. 
-- instance aggregators: aggregate instance features into a corresponding bag embedding at each analyzed scale. The AbMIL and SetTrans were considered in the experiments, having an encoder and pooling stage. 
-- multi-scale aggregator: aggregates the scale-specific bag embeddings into a multi-scale bag embedding, which is used for the final image classification.
+- **Multi-scale instance encoder**: uses the original Feature Pyramid Network (FPN) to produce a semantically refined feature pyramid, where instances are defined as the set of pixels in the feature maps at reduction factors 16, 32 and 128, which allow a multi-scale analysis across different receptive-field granualrities. 
+- **Instance aggregators**: aggregate instance features into a corresponding bag embedding at each analyzed scale. The AbMIL and SetTrans were considered in the experiments, having an encoder and pooling stage. 
+- **Multi-scale aggregator**: aggregates the scale-specific bag embeddings into a multi-scale bag embedding, which is used for the final image classification.
 
-Bellow, we provide the code to train our best-performing configurations regarding a given lesion type. 
+Bellow, we provide code examples to perform different tasks for specific lesion types. image classification and lesion detection to train our best-performing configurations regarding a given lesion type. 
 
-- ** Best configuraion for Calcifications**
+<details>
+  <summary>Feature extraction</summary>
+
+Following prior deep MIL models that handle large-size bags, the implemented framework uses the pretrained EfficientNet-B2 image encoder from the Mammo-CLIP work as the backbone for feature extraction. 
+- [Link for the pretrained EfficientNet-B2](https://huggingface.co/shawn24/Mammo-CLIP/blob/main/Pre-trained-checkpoints/b2-model-best-epoch-10.tar)
+
+After successfully downloading the image encoder checkpoint, you need to set the --clip_chk_pt_path argument to the correct path. 
+
+The implemented framework is compatible with both online and offline feature extraction. To perform offline feature extraction, run the following code:
+
+```bash
+python offline_feature_extraction.py \
+  --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \ # Path to Mammo-CLIP's image encoder checkpoint
+  --dataset 'ViNDr' \
+  --arch 'upmc_breast_clip_det_b2_period_n_lp' \
+  --csv-file 'vindrmammo_grouped_df.csv' \
+  --feat_dir 'PreProcessedData/Vindir-mammoclip/extracted_features' \
+  --patching \ # Wether to perform patching on full-resolution images. If false, it will consider previously extracted patches that were saved in a directory
+  --patch_size 512 \ 
+  --overlap 0.0 \
+  --multi_scale_model 'fpn'
+```
+  <summary>MIL training</summary>
+
+MIL performs an imagle classification task. Bellow, we provide codes to train our best-performing FPN-MIL model configurations for specific lesion types: 
+
+- ** Best-performing configuration for Calcifications**
 ```bash
 python main.py \
   --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
@@ -103,7 +129,7 @@ python main.py \
   --scales 16 32 128
 ```
 
-- ** Best configuraion for Masses**
+- ** Best-performing configuration for Masses**
 ```bash
 python main.py \
   --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
