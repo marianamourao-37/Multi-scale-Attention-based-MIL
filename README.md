@@ -53,6 +53,7 @@ Following prior deep MIL models that handle large-size bags, the implemented fra
 After successfully downloading the image encoder checkpoint, you need to set the --clip_chk_pt_path argument to the correct path. 
 
 The implemented framework is compatible with both online and offline feature extraction. To perform offline feature extraction, run the following code:
+
 ```bash
 python offline_feature_extraction.py \
   --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \ # Path to Mammo-CLIP's image encoder checkpoint
