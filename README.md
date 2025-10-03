@@ -76,8 +76,7 @@ The arguments of the implemented framework are mainly related to its main module
 
 Bellow, we provide code examples to perform different tasks for specific lesion types. image classification and lesion detection to train our best-performing configurations regarding a given lesion type. 
 
-<details>
-  <summary>Feature extraction</summary>
+<details> <summary>Feature extraction</summary>
 
 Following prior deep MIL models that handle large-size bags, the implemented framework uses the pretrained EfficientNet-B2 image encoder from the Mammo-CLIP work as the backbone for feature extraction. 
 - [Link for the pretrained EfficientNet-B2](https://huggingface.co/shawn24/Mammo-CLIP/blob/main/Pre-trained-checkpoints/b2-model-best-epoch-10.tar)
@@ -98,10 +97,7 @@ python offline_feature_extraction.py \
   --overlap 0.0 \
   --multi_scale_model 'fpn'
 ```
-</details>
-
-</details>
-  <summary>MIL training</summary>
+</details> <details> <summary>MIL training</summary>
 
 MIL performs an imagle classification task. Bellow, we provide codes to train our best-performing FPN-MIL model configurations for specific lesion types: 
 
