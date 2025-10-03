@@ -82,7 +82,7 @@ data_dir/
 
 # Feature Extraction 
 
-Following prior deep MIL models that handle large-size bags, the implemented framework uses the pretrained EfficientNet-B2 image encoder from the Mammo-CLIP work as the backbone for feature extraction. 
+Following prior deep MIL models that handle large-size bags, the implemented framework uses a foundational model as the backbone for feature extraction. Specifically, the vision-languange pretrained EfficientNet-B2 image encoder from the Mammo-CLIP work was considered. 
 - [Link to the pretrained EfficientNet-B2](https://huggingface.co/shawn24/Mammo-CLIP/blob/main/Pre-trained-checkpoints/b2-model-best-epoch-10.tar)
 
 After successfully downloading the image encoder checkpoint, you will need to set the --clip_chk_pt_path argument to the correct path. 
