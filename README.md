@@ -50,7 +50,7 @@ Regarding metadata information for the downstream tasks (image classification an
 Following prior deep MIL models that handle large-size bags, the implemented framework uses the pretrained EfficientNet-B2 image encoder from the Mammo-CLIP work as the backbone for feature extraction. 
 - [Link for the pretrained EfficientNet-B2](https://huggingface.co/shawn24/Mammo-CLIP/blob/main/Pre-trained-checkpoints/b2-model-best-epoch-10.tar)
 
-After successfully downloading the image encoder checkpoint, you need to set the --clip_chk_pt_path argument to the correct path. 
+After successfully downloading the image encoder checkpoint, you will need to set the --clip_chk_pt_path argument to the correct path. 
 
 The implemented framework is compatible with both online and offline feature extraction. To perform offline feature extraction, run the following code:
 
