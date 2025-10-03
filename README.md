@@ -53,7 +53,7 @@ Multi-scale-Attention-based-MIL/
 As mentioned in the paper, this work uses the preprocessed images provided by Ghosh et al. in their Mammo-CLIP work. 
 - [Link to input images](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
 
-The code assumes the following organization of folders and files: `data_dir` folder is the root directory of the dataset, where it is stored the [vindrmammo_grouped_df.csv](vindrmammo_grouped_df.csv) file with metadata information (patient id, image paths, annotated lesions, etc.) for the downstream tasks (image classification and lesion detection), besides also the `img_dir` folder containing the input mammograms.
+The code assumes the following organization of folders and files: `data_dir` is the root directory of the dataset, where it is stored the [vindrmammo_grouped_df.csv](vindrmammo_grouped_df.csv) file with metadata information (patient id, image paths, annotated lesions, etc.) for the downstream tasks (image classification and lesion detection), besides also the `img_dir` folder containing the input mammograms.
 
 ```plaintext
 data_dir/
