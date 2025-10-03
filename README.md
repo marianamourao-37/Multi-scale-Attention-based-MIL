@@ -67,6 +67,71 @@ python offline_feature_extraction.py \
   --multi_scale_model 'fpn'
 ```
 
+# MIL training 
+
+The arguments of the implemented framework are mainly related to its main modules, namely: 
+- multi-scale instance encoder: uses the original Feature Pyramid Network (FPN) to produce a semantically refined feature pyramid, where instances are defined as the set of pixels in the feature maps at reduction factors 16, 32 and 128, which allow a multi-scale analysis across different receptive-field granualrities. 
+- instance aggregators: aggregate instance features into a corresponding bag embedding at each analyzed scale. The AbMIL and SetTrans were considered in the experiments, having an encoder and pooling stage. 
+- multi-scale aggregator: aggregates the scale-specific bag embeddings into a multi-scale bag embedding, which is used for the final image classification.
+
+Bellow, we provide the code to train our best-performing configurations regarding a given lesion type. 
+
+- ** Best configuraion for Calcifications**
+```bash
+python main.py \
+  --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
+  --dataset 'ViNDr' \
+  --label "Suspicious_Calcification" \
+  --train \
+  --epochs 30 \
+  --batch-size 8 \
+  --eval_scheme 'kruns_train+val+test' \
+  --n_runs 1 \
+  --lr 5.0e-5 \
+  --weighted-BCE 'y' \
+  --mil_type 'pyramidal_mil' \
+  --multi_scale_model 'fpn' \
+  --fpn_dim 256 \
+  --fcl_encoder_dim 256 \
+  --fcl_dropout 0.25 \
+  --type_mil_encoder 'isab' \
+  --trans_layer_norm True \
+  --pooling_type 'pma' \
+  --drop_attention_pool 0.25 \
+  --type_scale_aggregator 'gated-attention' \
+  --deep_supervision \
+  --scales 16 32 128
+```
+
+- ** Best configuraion for Masses**
+```bash
+python main.py \
+  --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
+  --dataset 'ViNDr' \
+  --label "Mass" \
+  --train \
+  --epochs 30 \
+  --batch-size 8 \
+  --eval_scheme 'kruns_train+val+test' \
+  --n_runs 1 \
+  --lr 5.0e-5 \
+  --weighted-BCE 'y' \
+  --mil_type 'pyramidal_mil' \
+  --multi_scale_model 'fpn' \
+  --fpn_dim 256 \
+  --fcl_encoder_dim 256 \
+  --fcl_dropout 0.25 \
+  --pooling_type 'gated-attention' \
+  --drop_attention_pool 0.25 \
+  --type_scale_aggregator 'gated-attention' \
+  --deep_supervision \
+  --scales 16 32 128 
+```
+
+
+# Post-hoc lesion detection evaluation 
+
+
 # Checkpoints
 
 We provide pre-training checkpoints for our best-performing models.  
