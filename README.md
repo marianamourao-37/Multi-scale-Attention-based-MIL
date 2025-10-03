@@ -78,14 +78,17 @@ Bellow, we provide code examples to perform different tasks for specific lesion 
 
 <details> <summary>MIL training</summary>
 
-MIL performs an image classification task. Bellow, we provide codes to train our best-performing FPN-MIL model configurations for specific lesion types: 
+MIL performs an image classification task. Bellow, we provide codes to train our best-performing FPN-MIL model configurations for specific lesion types. 
 
 - **Best-performing configuration for Calcifications**
 ```bash
 python main.py \
-  --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
+  --data-dir "datasets/Vindir-mammoclip" \
+  --img-dir "VinDir_preprocessed_mammoclip/images_png" \
+  --csv-file "vindrmammo_grouped_df.csv" \
   --dataset 'ViNDr' \
   --label "Suspicious_Calcification" \
+  --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
   --train \
   --epochs 30 \
   --batch-size 8 \
@@ -110,9 +113,12 @@ python main.py \
 - **Best-performing configuration for Masses**
 ```bash
 python main.py \
-  --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
+  --data-dir "datasets/Vindir-mammoclip" \
+  --img-dir "VinDir_preprocessed_mammoclip/images_png" \
+  --csv-file "vindrmammo_grouped_df.csv" \
   --dataset 'ViNDr' \
   --label "Mass" \
+  --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
   --train \
   --epochs 30 \
   --batch-size 8 \
@@ -131,6 +137,15 @@ python main.py \
   --deep_supervision \
   --scales 16 32 128 
 ```
+
+- data-dir: root directory of the dataset
+- img-dir: directory containing images, absolute path
+- csv-file: csv file containing image paths and labels
+- dataset: dataset name, e.g. ViNDr 
+- label: target label for classification, e.g., Mass, Suspicious_Calcification
+- clip_chk_pt_path: path to the checkpoint of the pre-trained Mammo-CLIP model
+
+  
 </details>
 
 <details> <summary>Post-hoc lesion detection evaluation </summary> 
@@ -138,9 +153,12 @@ python main.py \
 - **Best-performing configuration for Calcifications**
 ```bash
 python main.py \
---clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
+--data-dir "datasets/Vindir-mammoclip" \
+--img-dir "VinDir_preprocessed_mammoclip/images_png" \
+--csv-file "vindrmammo_grouped_df.csv" \
 --dataset 'ViNDr' \
 --label "Suspicious_Calcification" \
+--clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
 --roi_eval \
 --resume <path-to-model-checkpoint> \
 --feature_extraction 'online' \
@@ -163,9 +181,12 @@ python main.py \
 - **Best-performing configuration for Masses**
 ```bash
 python main.py \
---clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
+--data-dir "datasets/Vindir-mammoclip" \
+--img-dir "VinDir_preprocessed_mammoclip/images_png" \
+--csv-file "vindrmammo_grouped_df.csv" \
 --dataset 'ViNDr' \
 --label "Mass" \
+--clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
 --roi_eval \
 --resume <path-to-model-checkpoint> \
 --feature_extraction 'online' \
@@ -182,6 +203,13 @@ python main.py \
 --deep_supervision \
 --scales 16 32 128 
 ```
+
+- data-dir: root directory of the dataset
+- img-dir: directory containing images, absolute path
+- csv-file: csv file containing image paths and labels
+- dataset: dataset name, e.g. ViNDr 
+- label: target label for classification, e.g., Mass, Suspicious_Calcification
+- clip_chk_pt_path: path to the checkpoint of the pre-trained Mammo-CLIP model
 
 </details>
 
