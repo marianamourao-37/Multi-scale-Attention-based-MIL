@@ -78,7 +78,11 @@ Bellow, we provide code examples to perform different tasks for specific lesion 
 
 <details> <summary>MIL training</summary>
 
-MIL performs an image classification task. By default, feature extraction is performed **offline**, meaning that the framework receives pre-extracted features as input (see the Feature Extraction section above).  Alternatively, feature extraction can be set to **online**, in which case the framework receives images directly as input. In the online mode, the backbone can be either **frozen** or **finetuned**, controlled by the `--training_mode` argument (default is `"frozen"`, but it can also be set to `"finetune"`).  Please refer to the `main.py` file to see the full range of available arguments.
+MIL performs an image classification task. By default, feature extraction is performed **offline**, meaning that the framework receives pre-extracted features as input (see the Feature Extraction section above).  
+
+Alternatively, feature extraction can be set to **online**, in which case the framework receives images directly as input. In the online mode, the backbone can be either **frozen** or **finetuned**, controlled by the `--training_mode` argument (default is `"frozen"`, but it can also be set to `"finetune"`).  
+
+Please refer to the `main.py` file to see the full range of available arguments.
 
 - **Best-performing configuration for Calcifications**
 ```bash
