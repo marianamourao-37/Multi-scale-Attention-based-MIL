@@ -99,6 +99,8 @@ python offline_feature_extraction.py \
   --multi_scale_model 'fpn'
 ```
 </details>
+
+</details>
   <summary>MIL training</summary>
 
 MIL performs an imagle classification task. Bellow, we provide codes to train our best-performing FPN-MIL model configurations for specific lesion types: 
