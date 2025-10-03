@@ -15,13 +15,6 @@ This repository contains the **official implementation** of the paper "**Multi-s
 
 ![Multi-scale attention-based MIL framework](figs/FPN-MIL.png)
 
-The proposed multi-scale attention-based MIL framework has three main modules, namely: 
-- **Multi-scale instance encoder:** Uses the original Feature Pyramid Network (FPN) to produce a semantically refined feature pyramid. Instances are defined as the set of pixels in the feature maps at reduction factors 16, 32 and 128, enabling a multi-scale analysis across different receptive-field granularities.  
-
-- **Instance aggregators:** Aggregate instance features into a corresponding bag embedding at each analyzed scale. Both AbMIL and SetTrans were considered in the experiments, each having an encoder and a pooling stage.  
-
-- **Multi-scale aggregator:** Aggregates the scale-specific bag embeddings into a multi-scale bag embedding, which is then used for the final image classification.
-
 # Table of Contents 
 
 1. [Repository Structure](#repository-structure)  
