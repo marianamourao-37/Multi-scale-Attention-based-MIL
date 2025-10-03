@@ -1,10 +1,8 @@
-# Multi-scale Attention-based Multiple Instance Learning (MIL)
+# Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis 
+[![MICCAI Paper](https://img.shields.io/badge/Paper-blue)](https://link.springer.com/chapter/10.1007/978-3-032-05182-0_36)
+[![Poster](https://img.shields.io/badge/Poster-yellow)](https://github.com/marianamourao-37/Multi-scale-Attention-based-MIL/blob/main/figs/1992%20-%20POSTER%20MICCAI.pdf)
 
-This repository contains the **official implementation** of the paper:
-
-📄 [**"Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis"**](https://link.springer.com/chapter/10.1007/978-3-032-05182-0_36)
-
-Accepted at the **MICCAI 2025** conference for oral presentation and poster session. 
+This repository contains the **official implementation** of the paper "Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis", accepted at the **MICCAI 2025** conference for oral presentation and poster session. 
 
 ![Multi-scale attention-based MIL framework](figs/FPN-MIL.png)
 
