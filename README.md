@@ -43,7 +43,23 @@ Multi-scale-Attention-based-MIL/
 As mentioned in the paper, this work uses the preprocessed images provided by Ghosh et al. in their Mammo-CLIP work. 
 - [Link to input images](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
 
-Regarding metadata information for the downstream tasks (image classification and lesion detection), please use the **vindrmammo_grouped_df.csv** provided in this repository. 
+The code assumes the following organization of folders and files: `data_dir` folder is the root directory of the dataset, where it is stored the `vindrmammo_grouped_df.csv` file with metadata information (patient id, image paths, annotated lesions, etc.) for the downstream tasks (image classification and lesion detection), besides also the `img_dir` folder containing the input mammograms.
+
+```plaintext
+data_dir/
+├── vindrmammo_grouped_df.csv
+└── img_dir/
+    ├── c7811f4575c1229ad4a7606de49ea68f/
+    │   ├── 9eb4650a2b630e44074c403f6127c5a1.png
+    │   ├── cc3fdc5d733a671f3000e20838e192d9.png
+    │   ├── 181fd193d3b785dc9faafdaa8e1695fc.png
+    │   └── 55eb5ea616abacd225e584ffc8be57da.png
+    └── a1dd219b28806fc295fac20ceb147870/
+        ├── 887cdcc99ebed66bd062ada6c8210152.png
+        ├── 36f2921a2ac19eba7420c591c4c07ae4.png
+        ├── 12dc17dfd9d30ea7c0c1ccb33a505085.png
+        └── e22e4f297b4c82279e7b78a98417a6cd.png
+````
 
 # Feature Extraction 
 
