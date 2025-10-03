@@ -6,7 +6,14 @@ This repository contains the **official implementation** of the paper:
 
 Accepted at the **MICCAI 2025** conference for oral presentation and poster session. 
 
-![Multi-scale MIL framework](figs/FPN-MIL.png)
+![Multi-scale attention-based MIL framework](figs/FPN-MIL.png)
+
+The proposed multi-scale attention-based MIL framework has three main modules, namely: 
+- **Multi-scale instance encoder:** Uses the original Feature Pyramid Network (FPN) to produce a semantically refined feature pyramid. Instances are defined as the set of pixels in the feature maps at reduction factors 16, 32 and 128, enabling a multi-scale analysis across different receptive-field granularities.  
+
+- **Instance aggregators:** Aggregate instance features into a corresponding bag embedding at each analyzed scale. Both AbMIL and SetTrans were considered in the experiments, each having an encoder and a pooling stage.  
+
+- **Multi-scale aggregator:** Aggregates the scale-specific bag embeddings into a multi-scale bag embedding, which is then used for the final image classification.
 
 
 ## Repository Structure
@@ -89,14 +96,6 @@ python offline_feature_extraction.py \
 # Code examples 
 
 Bellow, we provide code examples to perform different tasks for specific lesion types, particularly focusing on our best-performing FPN-MIL model configurations. 
-
-**Note:** The arguments of the implemented framework are mainly related to its main modules, namely:
-
-- **Multi-scale instance encoder:** Uses the original Feature Pyramid Network (FPN) to produce a semantically refined feature pyramid. Instances are defined as the set of pixels in the feature maps at reduction factors 16, 32, and 128, enabling multi-scale analysis across different receptive-field granularities.  
-
-- **Instance aggregators:** Aggregate instance features into a corresponding bag embedding at each analyzed scale. Both AbMIL and SetTrans were considered in the experiments, each having an encoder and a pooling stage.  
-
-- **Multi-scale aggregator:** Aggregates the scale-specific bag embeddings into a multi-scale bag embedding, which is then used for the final image classification.
 
 <details> <summary>MIL training</summary>
 
