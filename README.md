@@ -22,8 +22,17 @@ The proposed multi-scale attention-based MIL framework has three main modules, n
 
 - **Multi-scale aggregator:** Aggregates the scale-specific bag embeddings into a multi-scale bag embedding, which is then used for the final image classification.
 
+# Table of Contents 
 
-## Repository Structure
+1. Repository Structure
+2. Data Download
+3. Feature Extraction
+4. Code examples
+5. Tutorial Notebooks
+6. Checkpoints
+7. Reference
+
+# Repository Structure
 
 ```plaintext
 Multi-scale-Attention-based-MIL/
