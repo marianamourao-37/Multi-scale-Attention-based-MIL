@@ -1,8 +1,8 @@
 # Multi-scale Attention-based Multiple Instance Learning (MIL)
 
 This repository contains the **official implementation** of the paper:
-**"Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis"**  
-Accepted at the **MICCAI 2025** conference.
+📄 **"Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis"** [Link to Paper](https://link.springer.com/chapter/10.1007/978-3-032-05182-0_36)
+Accepted at the **MICCAI 2025** conference for oral presentation and poster session. 
 
 ## Repository Structure
 
@@ -36,6 +36,13 @@ Multi-scale-Attention-based-MIL/
 │── offline_feature_extraction.py           # Script for offline feature extraction  
 ````
 
+# Data Download
+
+As mentioned in the paper, this work uses the preprocessed images provided by Ghosh et al. in their Mammo-CLIP work. 
+[Link to input images](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
+[Link to csv file](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
+
+Regarding metadata information for the downstream tasks (image classification and lesion detection), please use the vindrmammo_grouped_df.csv provided in this repository. 
 
 # Checkpoints
 
