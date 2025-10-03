@@ -222,7 +222,12 @@ python main.py \
 
 </details>
 
+# Tutorial Notebooks
 
+To ensure fully reproducible results, notebooks are provided to run the code for all tasks (image classification and lesion detection) and for all experiments (comparison with baselines and ablation studies) performed.
+
+- [Experiments_Calcifications.ipynb]()
+- [Experiments_Masses.ipynb]()
 
 # Checkpoints
 
