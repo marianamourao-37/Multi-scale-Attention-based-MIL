@@ -128,6 +128,7 @@ python main.py \
   --label "Mass" \
   --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \
   --train \
+  --feature_extraction "offline" \ 
   --epochs 30 \
   --batch-size 8 \
   --eval_scheme 'kruns_train+val+test' \
@@ -157,6 +158,10 @@ python main.py \
 </details>
 
 <details> <summary>Post-hoc lesion detection evaluation </summary> 
+
+Lesion detection is performed as a post-hoc analysis of the generated heatmaps (at each scale and at the multi-scale aggregated level).  
+
+**Note:** For the lesion detection post-hoc analysis, feature extraction is set to **online** in order to define a higher percentage of overlap between extracted patches. This allows the generation of more fine-grained heatmaps, where the attention scores in overlapped regions are accumulated and averaged.
 
 - **Best-performing configuration for Calcifications**
 ```bash
