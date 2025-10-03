@@ -154,7 +154,7 @@ python main.py \
   --deep_supervision \
   --scales 16 32 128 
 ```
-
+</details>
 
 # Post-hoc lesion detection evaluation 
 
