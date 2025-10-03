@@ -252,7 +252,7 @@ To ensure fully reproducible results, notebooks are provided to run the code for
 - [Experiments_Calcifications.ipynb](notebooks/Experiments_Calcifications.ipynb)
 - [Experiments_Masses.ipynb](notebooks/Experiments_Masses.ipynb)
 
-Besides, to load our best checkpoint models for each lesion type (FPN-SetTrans for calcifications and FPN-AbMIL for masses), consider the following notebook: 
+Additionally, to load our best checkpoint models for each lesion type (FPN-SetTrans for calcifications and FPN-AbMIL for masses), refer to the following notebook:
 - [Load_checkpoints.ipynb](notebooks/Load_checkpoints.ipynb)
 
 # Checkpoints
