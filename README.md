@@ -45,6 +45,26 @@ As mentioned in the paper, this work uses the preprocessed images provided by Gh
 
 Regarding metadata information for the downstream tasks (image classification and lesion detection), please use the **vindrmammo_grouped_df.csv** provided in this repository. 
 
+# Feature Extraction 
+
+Following prior deep MIL models that handle large-size bags, the implemented framework uses the pretrained [EfficientNet-B2](https://huggingface.co/shawn24/Mammo-CLIP/blob/main/Pre-trained-checkpoints/b2-model-best-epoch-10.tar) image encoder from the Mammo-CLIP work as the backbone for feature extraction. 
+- [Link for the pretrained EfficientNet-B2](https://huggingface.co/shawn24/Mammo-CLIP/blob/main/Pre-trained-checkpoints/b2-model-best-epoch-10.tar)
+
+After successfully downloading the image encoder checkpoint, you need to set the --clip_chk_pt_path argument to the correct path. 
+
+The implemented framework is compatible with both online and offline feature extraction. To perform offline feature extraction, run the following code:
+```bash
+python offline_feature_extraction.py \
+  --clip_chk_pt_path "foundational_models/Mammo-CLIP-main/b2-model-best-epoch-10.tar" \ # Path to Mammo-CLIP's image encoder checkpoint
+  --dataset 'ViNDr' \
+  --arch 'upmc_breast_clip_det_b2_period_n_lp' \
+  --csv-file 'vindrmammo_grouped_df.csv' \
+  --feat_dir 'PreProcessedData/Vindir-mammoclip/extracted_features' \
+  --patching \ # Wether to perform patching on full-resolution images. If false, it will consider previously extracted patches that were saved in a directory
+  --patch_size 512 \ 
+  --overlap 0.0 \
+  --multi_scale_model 'fpn'
+
 # Checkpoints
 
 We provide pre-training checkpoints for our best-performing models.  
