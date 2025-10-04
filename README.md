@@ -7,13 +7,13 @@ Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnos
     <img src="https://img.shields.io/badge/Paper-green">
   </a>
   <a href="https://github.com/marianamourao-37/Multi-scale-Attention-based-MIL/blob/main/figs/1992%20-%20POSTER%20MICCAI.pdf">
-    <img src="https://img.shields.io/badge/Poster-lightblue">
+    <img src="https://img.shields.io/badge/Poster-blue">
   </a>
   <a href="https://github.com/marianamourao-37/Multi-scale-Attention-based-MIL/blob/main/figs/oral%20presentation%20-%20FPN-MIL%20Mour%C3%A3o%20et%20al.pdf">
     <img src="https://img.shields.io/badge/Oral Presentation (PDF)-yellow">
   </a>
   <a href="https://drive.google.com/file/d/1InIk8h90NdliC5s0ar1qTYJ9S4yXIe3T/view?usp=sharing">
-    <img src="https://img.shields.io/badge/Oral Presentation (Video)-blue">
+    <img src="https://img.shields.io/badge/Oral Presentation (Video)-orange">
   </a>
 </p>
 
