@@ -182,11 +182,11 @@ python main.py \
 ```
 
 - `data-dir`: root directory of the dataset
-- `img-dir`: directory containing images, absolute path
+- `img-dir`: directory containing images
 - `csv-file`: csv file containing image paths and labels
 - `dataset`: dataset name, e.g. ViNDr 
 - `label`: target label for classification, e.g., Mass, Suspicious_Calcification
-- `clip_chk_pt_path`: path to the checkpoint of the pre-trained Mammo-CLIP model
+- `clip_chk_pt_path`: path to the checkpoint of the pre-trained Mammo-CLIP's image encoder
 
   
 </details>
@@ -252,11 +252,11 @@ python main.py \
 ```
 
 - `data-dir`: root directory of the dataset
-- `img-dir`: directory containing images, absolute path
+- `img-dir`: directory containing images
 - `csv-file`: csv file containing image paths and labels
 - `dataset`: dataset name, e.g. ViNDr 
 - `label`: target label for classification, e.g., Mass, Suspicious_Calcification
-- `clip_chk_pt_path`: path to the checkpoint of the pre-trained Mammo-CLIP model
+- `clip_chk_pt_path`: path to the checkpoint of the pre-trained Mammo-CLIP's image encoder
 
 
 </details>
