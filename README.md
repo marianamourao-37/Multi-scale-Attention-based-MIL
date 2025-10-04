@@ -65,7 +65,7 @@ Multi-scale-Attention-based-MIL/
 
 # Data Download
 
-As mentioned in the paper, this work uses the preprocessed images provided by Ghosh et al. in their Mammo-CLIP work. 
+As mentioned in the paper, this work uses the preprocessed images provided by Ghosh et al. in their [Mammo-CLIP](https://arxiv.org/abs/2405.12255) work. 
 - [Link to VinDr-Mammo preprocessed images](https://www.kaggle.com/datasets/shantanughosh/vindr-mammogram-dataset-dicom-to-png)
 
 The code assumes the following organization of folders and files: `data_dir` is the root directory of the dataset, where it is stored the [vindrmammo_grouped_df.csv](vindrmammo_grouped_df.csv) file with metadata information (patient id, image paths, annotated lesions, etc.) for the downstream tasks (image classification and lesion detection), besides also the `img_dir` folder containing the input mammograms.
@@ -88,7 +88,7 @@ data_dir/
 
 # Feature Extraction 
 
-Following prior deep MIL models that handle large-size bags, the implemented framework uses a foundational model as the backbone for feature extraction. Specifically, the vision-languange pretrained EfficientNet-B2 image encoder from the Mammo-CLIP work was considered. 
+Following prior deep MIL models that handle large-size bags, the implemented framework uses a foundational model as the backbone for feature extraction. Specifically, the vision-languange pretrained EfficientNet-B2 image encoder from the [Mammo-CLIP](https://arxiv.org/abs/2405.12255) work was considered. 
 - [Link to the pretrained EfficientNet-B2](https://huggingface.co/shawn24/Mammo-CLIP/blob/main/Pre-trained-checkpoints/b2-model-best-epoch-10.tar)
 
 After successfully downloading the image encoder checkpoint, you will need to set the --clip_chk_pt_path argument to the correct path. 
