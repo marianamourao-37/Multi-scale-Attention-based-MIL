@@ -285,9 +285,9 @@ We provide pre-training checkpoints for our best-performing models.
 If you find our work useful in your research or if you use parts of this code, please use the following BibTeX entry.
 
 ```plaintext
-@InProceedings{MouMar_Multiscale_MICCAI2025,
-        author = { Mourão, Mariana AND Nascimento, Jacinto C. AND Santiago, Carlos AND Silveira, Margarida},
-        title = { { Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis } },
+@InProceedings{Mourao_FPNMIL_MICCAI2025,
+        author = {Mourão, Mariana AND Nascimento, Jacinto C. AND Santiago, Carlos AND Silveira, Margarida},
+        title = {{Multi-scale Attention-based Multiple Instance Learning for Breast Cancer Diagnosis}},
         booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2025},
         year = {2025},
         publisher = {Springer Nature Switzerland},
