@@ -92,7 +92,7 @@ data_dir/
 Following prior deep MIL models that handle large-size bags, the implemented framework uses a foundational model as the backbone for feature extraction. Specifically, the vision-languange pretrained EfficientNet-B2 image encoder from the [Mammo-CLIP](https://arxiv.org/abs/2405.12255) work was considered. 
 - [Link to the pretrained EfficientNet-B2](https://huggingface.co/shawn24/Mammo-CLIP/blob/main/Pre-trained-checkpoints/b2-model-best-epoch-10.tar)
 
-After successfully downloading the image encoder checkpoint, you will need to set the --clip_chk_pt_path argument to the correct path. 
+After successfully downloading the image encoder checkpoint, you will need to set the `clip_chk_pt_path` argument to the correct path. 
 
 The implemented framework is compatible with both online and offline feature extraction. To perform offline feature extraction, run the following code:
 
@@ -117,7 +117,7 @@ Bellow, we provide code examples to perform different tasks for specific lesion 
 
 MIL performs an image classification task. By default, feature extraction is performed **offline**, meaning that the framework receives pre-extracted features as input (see the Feature Extraction section above).  
 
-Alternatively, feature extraction can be set to **online**, in which case the framework receives images directly as input. In the online mode, the backbone can be either **frozen** or **finetuned**, controlled by the `--training_mode` argument (default is `"frozen"`, but it can also be set to `"finetune"`).  
+Alternatively, feature extraction can be set to **online**, in which case the framework receives images directly as input. In the online mode, the backbone can be either **frozen** or **finetuned**, controlled by the `training_mode` argument (default is `"frozen"`, but it can also be set to `"finetune"`).  
 
 Please refer to the `main.py` file to see the full range of available arguments.
 
