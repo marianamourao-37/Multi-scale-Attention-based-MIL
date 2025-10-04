@@ -125,7 +125,7 @@ Please refer to the `main.py` file to see the full range of available arguments.
 ```bash
 python main.py \
   --data-dir "datasets/Vindir-mammoclip" \
-  --img-dir "VinDir_preprocessed_mammoclip/images_png" \
+  --feat-dir "extracted_features" \
   --csv-file "vindrmammo_grouped_df.csv" \
   --dataset 'ViNDr' \
   --label "Suspicious_Calcification" \
@@ -156,7 +156,7 @@ python main.py \
 ```bash
 python main.py \
   --data-dir "datasets/Vindir-mammoclip" \
-  --img-dir "VinDir_preprocessed_mammoclip/images_png" \
+  --feat-dir "extracted_features" \
   --csv-file "vindrmammo_grouped_df.csv" \
   --dataset 'ViNDr' \
   --label "Mass" \
@@ -182,7 +182,7 @@ python main.py \
 ```
 
 - `data-dir`: root directory of the dataset
-- `img-dir`: directory containing images
+- `feat-dir`: directory containing pre-extracted features offline 
 - `csv-file`: csv file containing image paths and labels
 - `dataset`: dataset name, e.g. ViNDr 
 - `label`: target label for classification, e.g., Mass, Suspicious_Calcification
